@@ -44,7 +44,7 @@
 </nav>
 
 <body>
-
+    <hr width="100%" size="5" color="black" style="margin-top:2px">
 </body>
 
 </html>
