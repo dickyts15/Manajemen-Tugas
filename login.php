@@ -1,5 +1,5 @@
 <?php
-    include('layouts/header.php');
+    include('layouts/headerNotSigned.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manajemen Tugas</title>
+
 </head>
 <body>
-    
+    <h1>sadsada</h1>
 </body>
 </html>
+
+<?php
+    include('layouts/footer.php');
+?>

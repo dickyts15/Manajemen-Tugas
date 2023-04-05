@@ -1,5 +1,5 @@
 <?php
-    include('layouts/header.php');
+    include('layouts/headerNotSigned.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,3 +14,6 @@
     
 </body>
 </html>
+<?php
+include('layouts/footer.php');
+?>
