@@ -2,8 +2,76 @@ body{
     background-color:#F8C3C4 ;
 }
 
+section {
+    display: flex;
+    align-items: center;
+}
+
 .wrapping{
     display:flex;
     background-color: #F1F1F1;
 }
 
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 2rem;
+    margin-bottom: 0%;
+    background-color: #EA5455;
+    border-radius: 12px 12px 0px 0px;
+    color: #ffffff;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.left-content {
+    align-items: center;
+    width: 100%;
+}
+
+.form-group{
+    color:#ffffff;
+    margin-right: 600px;
+    margin-left: 45px;
+    margin-bottom: 30px;
+}
+
+.form-check-label {
+    display:flexbox;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 4px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.form-check-container {
+    margin: 0 0 2rem 3rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    align-items: center;
+}
+
+.btnTambah{
+    size: 20px;
+    padding: 3px;
+    background-color: #159895;
+    color: white;
+    border:hidden;
+    border-radius: 10px;
+    margin: 0 0 2rem 3rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    align-items: center;
+}
+
+.form-image{
+    justify-content: flex-end;
+}
