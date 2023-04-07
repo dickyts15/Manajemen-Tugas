@@ -39,7 +39,7 @@
         <div class="offset-1 px-5 py-4">
             <h6 class="my-2">Contact</h6>
             <p class="my-4"><i class="icon_mail me-3"></i> Info@manajementugas.com</p>
-            <a class="text-reset text-decoration-none my-4" href="https://goo.gl/maps/rWGnQnBvehJMJ7FHA"><i class="icon_pin me-3"></i> ITENAS, Bandung, Indonesia</a>
+            <a class="text-reset text-decoration-none my-4" href="https://goo.gl/maps/rWGnQnBvehJMJ7FHA" target="_blank"><i class="icon_pin me-3"></i> ITENAS, Bandung, Indonesia</a>
         </div>
     </div>
 
