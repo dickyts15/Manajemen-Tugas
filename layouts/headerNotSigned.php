@@ -48,7 +48,7 @@
                 </ul>
             </div>
 
-            <a class="btn px-5 py-2 me-5" href="login.php" style="color:white; background-color:#159895; mix-blend-mode:darken; box-shadow: 0px 4px 4px rgba(0,0,0,0.25);">LOGIN</a>
+            <a class="btn btn-outline-light shadow px-5 py-2 me-5" href="login.php" style="background-color:#159895;">LOGIN</a>
         </div>
     </nav>
     </header>

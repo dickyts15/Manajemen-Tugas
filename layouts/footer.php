@@ -39,11 +39,11 @@
         <div class="offset-1 px-5 py-4">
             <h6 class="my-2">Contact</h6>
             <p class="my-4"><i class="icon_mail me-3"></i> Info@manajementugas.com</p>
-            <p class="my-4"><i class="icon_pin me-3"></i> Bandung, Indonesia</p>
+            <a class="text-reset text-decoration-none my-4" href="https://goo.gl/maps/rWGnQnBvehJMJ7FHA"><i class="icon_pin me-3"></i> ITENAS, Bandung, Indonesia</a>
         </div>
     </div>
 
-    <div class="text-left px-5 py-2" style="background-color: #f1f1f1;">
+    <div class="text-start px-5 py-2" style="background-color: #f1f1f1;">
         <hr width="100%">
         <p>&copy; 2023, Manajemen Tugas</p>
     </div>

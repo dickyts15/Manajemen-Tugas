@@ -12,25 +12,15 @@ section {
     background-color: #F1F1F1;
 }
 
-.hero{
+.card-index{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 2rem;
+    margin: 0rem;
     margin-bottom: 0%;
     background-color: #EA5455;
-    border-radius: 12px 12px 0px 0px;
+    border-radius: 12px 12px 12px 12px;
     color: #ffffff;
-}
-.content{
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem;
-}
-
-.left-content {
-    align-items: center;
-    width: 100%;
 }
 
 .form-group{
@@ -74,4 +64,9 @@ section {
 
 .form-image{
     justify-content: flex-end;
+}
+
+.my-10{
+    margin-top:10%;
+    margin-bottom: 10%;
 }

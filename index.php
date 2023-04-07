@@ -1,9 +1,10 @@
 <?php
-    include('layouts/headerNotSigned.php');
+include('layouts/headerNotSigned.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,31 +14,35 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <main>
-        <div>
-            <div class="container">
-                <div class="hero">
-                    <div class="content">
-                        <div class="left-content">
-                        <h1 style="font-weight: bold">Welcome To Our<br>Manajemen Tugas</h1>
-                        <p>Manajemen Tugas membantu pelajar<br>
-                        dalam mengatur tugas - tugas yang<br>
-                        harus diprioritaskan terlebih dahulu<br>
-                        agar tidak melewati tenggat waktu</p>
-                        </div>
-                        <div class="right-content">
-                            <img src="image/check-homepage.png" width="566px" height="463px" alt="">
-                        </div>
+    <div class="card-index m-5">
+        <div class="container-fluid py-5 mx-4">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <div class="border-start border-5 text-start px-4 py-2 my-5">
+                        <h1><b>Welcome To Our<br>Manajemen Tugas<br><br></b></h1>
+                        <h5>Manajemen Tugas membantu pelajar
+                            <br><br>dalam mengatur tugas - tugas yang
+                            <br><br>harus diprioritaskan terlebih dahulu
+                            <br><br>agar tidak melewati tenggat waktu
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <img src="image/check-homepage.png" width="500px" alt="">
                     </div>
                 </div>
             </div>
+
+
         </div>
-    </main>
+    </div>
 </body>
 
 
 </html>
 <?php
-    include('layouts/footer.php');
+include('layouts/footer.php');
 ?>
