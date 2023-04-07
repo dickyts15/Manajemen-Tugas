@@ -20,7 +20,8 @@
                 <div class="hero">
                     <div class="content">
                         <div class="left-content">
-                        <h1 style="font-weight: bold">Welcome To Our<br>Manajemen Tugas</h1>
+                        <h1 style="font-weight: bold">Welcome To Our
+                        <br>Manajemen Tugas</h1>
                         <p>Manajemen Tugas membantu pelajar<br>
                         dalam mengatur tugas - tugas yang<br>
                         harus diprioritaskan terlebih dahulu<br>
