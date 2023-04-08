@@ -23,49 +23,6 @@ section {
     color: #ffffff;
 }
 
-.form-group{
-    color:#ffffff;
-    margin-right: 600px;
-    margin-left: 45px;
-    margin-bottom: 30px;
-}
-
-.form-check-label {
-    display:flexbox;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 4px;
-    background-color: white;
-    box-sizing: border-box;
-    border-radius: 8px;
-}
-
-.form-check-container {
-    margin: 0 0 2rem 3rem;
-    display: flex;
-    justify-content: flex-start;
-    gap: 3rem;
-    align-items: center;
-}
-
-.btnTambah{
-    size: 20px;
-    padding: 3px;
-    background-color: #159895;
-    color: white;
-    border:hidden;
-    border-radius: 10px;
-    margin: 0 0 2rem 3rem;
-    display: flex;
-    justify-content: flex-start;
-    gap: 3rem;
-    align-items: center;
-}
-
-.form-image{
-    justify-content: flex-end;
-}
-
 .shadow-form {
     background-color: rgba(0,0,0,0.03) !important;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3) !important;

@@ -13,47 +13,44 @@ include('layouts/headerSigned.php');
 </head>
 
 <body style="background-color: #EA5455">
-    <section>
-        <div class="left-content">
+    <div class="text-white mx-5 px-5 py-3">
+        <h2>Tambah Tugas</h2>
+    </div>
+    <div class="container d-flex">
+        <div class="col-md-7 pe-5 me-5 text-white">
             <form>
-                <div class="main">
-                    <h1 style="font-weight: bold; color: #ffffff; margin-left: 45px;
-            margin-top: 30px">Tambah Tugas</h1>
-                    <div class="form-group">
-                        <div>
-                            <label for="inputJudul">Judul</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div>
-                            <label for="inputDeskripsi">Deskripsi</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div>
-                            <label for="inputDate">Date</label>
-                            <input type="Date" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-check-container">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio">
-                            <label class="form-check-label" for="inlineRadio1">To Do</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio">
-                            <label class="form-check-label" for="inlineRadio2">Doing</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio">
-                            <label class="form-check-label" for="inlineRadio3">Done</label>
-                        </div>
-                    </div>
-                    <button class="btnTambah" type="submit">Tambah</button>
+                <label for="judulForm"><b>
+                        <h4>Judul</h4>
+                    </b></label>
+                <input type="text" class="form-control form-control-lg mb-3 shadow rounded-4" id="judulForm" placeholder="Judul Tugas">
+                <label for="deskripsiForm"><b>
+                        <h4>Deskripsi</h4>
+                    </b></label>
+                <input type="text" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" placeholder="Deskripsi Tugas">
+                <label for="deskripsiForm"><b>
+                        <h4>Due Date</h4>
+                    </b></label>
+                <input type="date" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" placeholder="Date">
+                <h4 class="py-2">Status</h4>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label bg-white rounded-4 px-4 text-black" for="inlineRadio1">To Do</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label bg-white rounded-4 px-4 text-black" for="inlineRadio2">Doing</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label bg-white rounded-4 px-4 text-black" for="inlineRadio3">Done</label>
+                </div>
+                <center><input class="btn btn-outline-light border-0 shadow px-5 py-2 my-4" style="background-color:#159895;" type="submit" value="Tambah"></center>
             </form>
         </div>
-    </section>
-
-
+        <div class="col-md-4">
+            <img src="image/Add-TambahTugas.png" width="400px" alt="">
+        </div>
+    </div>
 </body>
 
 </html>
