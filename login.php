@@ -32,9 +32,9 @@ include('layouts/headerNotSigned.php');
                         <p class="text-muted">Please enter your email and password.</p>
                         <form>
                             <label for="emailForm"><b><h4>Email</h4></b></label>
-                            <input type="email" class="form-control form-control-lg mb-3 shadow-sm rounded-0" style="border-left: 6px solid #159895" id="emailForm" placeholder="Email">
+                            <input type="email" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="emailForm" placeholder="Email">
                             <label for="passwordForm"><b><h4>Password</h4></b></label>
-                            <input type="password" class="form-control form-control-lg mb-3 shadow-sm rounded-0" style="border-left: 6px solid #159895" id="passwordForm" placeholder="Password">
+                            <input type="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="passwordForm" placeholder="Password">
                             <p class="text-nowrap text-muted">Not Registered? <a class="text-danger text-decoration-none text-opacity-75" href="register.php"><b>Create an account</b></a></p>
                             <center><input class="btn btn-outline-light shadow px-5 py-2" style="background-color:#159895;" type="submit" value="LOGIN"></center>
                         </form>
