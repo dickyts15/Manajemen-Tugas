@@ -3,19 +3,11 @@ session_start();
 include('server/connection.php');
 
 if (!isset($_SESSION['logged_in'])) {
-    header('location: login.php?error=You are not logged in');
+    echo "<script>
+            alert('Anda Belum Login!');
+            document.location='login.php';
+            </script>";
     exit;
-}
-
-if (isset($_GET['logout'])) {
-    if (isset($_SESSION['logged_in'])) {
-        unset($_SESSION['logged_in']);
-        unset($_SESSION['username']);
-        unset($_SESSION['email']);
-        unset($_SESSION['password']);
-        header('location:index.php');
-        exit;
-    }
 }
 
 if (isset($_POST['tambahTugas'])) {
@@ -35,7 +27,10 @@ if (isset($_POST['tambahTugas'])) {
     $stmt_tugas_check->fetch();
 
     if ($num_rows !== 0) {
-        header('location: tambah_tugas.php?error=Tugas dengan Judul tersebut sudah ada');
+        echo "<script>
+            alert('Gagal Menambah Tugas! Tugas dengan Judul tersebut sudah ada');
+            document.location='tambah_tugas.php';
+            </script>";
     } else {
         $save_tugas = "INSERT INTO tugas (idUser,judul,deskripsi,deadline,status)
                    VALUES (?, ?, ?, ?, ?)";
@@ -53,9 +48,15 @@ if (isset($_POST['tambahTugas'])) {
             $_SESSION['deadline'] = $deadline;
             $_SESSION['status'] = $status;
 
-            header('location:tambah_tugas.php?message=Berhasil Menambahkan Tugas');
+            echo "<script>
+            alert('Berhasil Menambah Tugas!');
+            document.location='list_tugas.php';
+            </script>";
         } else {
-            header('location:tambah_tugas.php?error=Tugas Gagal Ditambahkan');
+            echo "<script>
+            alert('Gagal Menambah Tugas!');
+            document.location='tambah_tugas.php';
+            </script>";
         }
     }
 }
@@ -83,15 +84,15 @@ include('layouts/headerSigned.php');
                 <label for="judulForm"><b>
                         <h4>Judul</h4>
                     </b></label>
-                <input type="text" class="form-control form-control-lg mb-3 shadow rounded-4" id="judulForm" name="judul" placeholder="Judul Tugas">
+                <input type="text" class="form-control form-control-lg mb-3 shadow rounded-4" id="judulForm" name="judul" placeholder="Judul Tugas" required>
                 <label for="deskripsiForm"><b>
                         <h4>Deskripsi</h4>
                     </b></label>
-                <input type="text" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" name="deskripsi" placeholder="Deskripsi Tugas">
+                <textarea type="text" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" name="deskripsi" rows="3" placeholder="Deskripsi Tugas" required></textarea>
                 <label for="deskripsiForm"><b>
                         <h4>Due Date</h4>
                     </b></label>
-                <input type="date" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" name="deadline" placeholder="Date">
+                <input type="date" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" name="deadline" placeholder="Date" required>
                 <h4 class="py-2">Status</h4>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="status" id="status1" value="To Do">
