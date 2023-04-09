@@ -1,5 +1,13 @@
 <?php
-include('layouts/headerNotSigned.php');
+
+session_start();
+
+if (!isset($_SESSION['logged_in'])) {
+    include('layouts/headerNotSigned.php');
+} else {
+    include('layouts/headerSigned.php');
+}
+
 ?>
 
 <!DOCTYPE html>

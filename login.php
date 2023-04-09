@@ -3,7 +3,10 @@ session_start();
 include('server/connection.php');
 
 if (isset($_SESSION['logged_in'])) {
-    header('location: dashboard.php');
+    echo "<script>
+            alert('Anda Berhasil Login!');
+            document.location='dashboard.php';
+            </script>";
     exit;
 }
 
@@ -30,13 +33,22 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['email'] = $email;
             $_SESSION['logged_in'] = true;
 
-            header('location: dashboard.php?message=Berhasil Login');
+            echo "<script>
+            alert('Anda Berhasil Login!');
+            document.location='dashboard.php';
+            </script>";
         } else {
-            header('location: login.php?error=Tidak dapat Memverifikasi Akun Anda');
+            echo "<script>
+            alert('Akun Tidak Ditemukan, Silahkan Cek Email dan Password atau Register!');
+            document.location='login.php';
+            </script>";
         }
     } else {
         // Error
-        header('location: login.php?error=Something went wrong!');
+        echo "<script>
+            alert('Something Went Wrong!');
+            document.location='login.php';
+            </script>";
     }
 }
 ?>

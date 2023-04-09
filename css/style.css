@@ -27,3 +27,17 @@ section {
     background-color: rgba(0,0,0,0.03) !important;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3) !important;
   }
+
+  .list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .list li:before {
+    content: "-";
+    margin-right: 5px;
+  }
+
+  .text-justify{
+    text-align: justify;
+  }

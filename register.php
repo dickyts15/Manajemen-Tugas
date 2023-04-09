@@ -2,11 +2,6 @@
 session_start();
 include('server/connection.php');
 
-if (isset($_SESSION['logged_in'])) {
-    header('location: dashboard.php');
-    exit;
-}
-
 if (isset($_POST['register'])) {
     $nama = $_POST['nama'];
     $username = $_POST['username'];
@@ -25,7 +20,10 @@ if (isset($_POST['register'])) {
 
     // Ketika ada Username yang sama
     if ($num_rows !== 0) {
-        header('location: register.php?error=Username already exists');
+        echo "<script>
+            alert('Username Telah Terdaftar!');
+            document.location='register.php';
+            </script>";
     } else {
         $save_user = "INSERT INTO users (nama, username, password, email)
                       VALUES (?, ?, ?, ?)";
@@ -44,9 +42,15 @@ if (isset($_POST['register'])) {
             $_SESSION['password'] = $password;
             $_SESSION['email'] = $email;
 
-            header('location: login.php?register_success=Anda Telah Berhasil Register, Silahkan Login.');
+            echo "<script>
+            alert('Anda Telah Berhasil Register, Silahkan Login.');
+            document.location='login.php';
+            </script>";
         } else {
-            header('location: register.php?error=Akun Tidak Berhasil Dibuat');
+            echo "<script>
+            alert('Akun Tidak Berhasil Dibuat!');
+            document.location='register.php';
+            </script>";
         }
     }
 }

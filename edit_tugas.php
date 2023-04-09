@@ -3,19 +3,11 @@ session_start();
 include('server/connection.php');
 
 if (!isset($_SESSION['logged_in'])) {
-    header('location: login.php?error=You are not logged in');
+    echo "<script>
+            alert('Anda Belum Login!');
+            document.location='login.php';
+            </script>";
     exit;
-}
-
-if (isset($_GET['logout'])) {
-    if (isset($_SESSION['logged_in'])) {
-        unset($_SESSION['logged_in']);
-        unset($_SESSION['username']);
-        unset($_SESSION['email']);
-        unset($_SESSION['password']);
-        header('location:index.php');
-        exit;
-    }
 }
 
 $judulEdit = "";
@@ -46,16 +38,21 @@ if (isset($_POST['editTugas_btn'])) {
 
     if ($stmt_edit_tugas->execute()) {
 
-        $_SESSION['idTugas'] = $idTugas;
         $_SESSION['idUser'] = $idUser;
         $_SESSION['judul'] = $judul;
         $_SESSION['deskripsi'] = $deskripsi;
         $_SESSION['deadline'] = $deadline;
         $_SESSION['status'] = $status;
         
-        header('location:list_tugas.php?message=Berhasil Mengupdate Tugas');
+        echo "<script>
+            alert('Berhasil Mengupdate Tugas!');
+            document.location='list_tugas.php';
+            </script>";
     } else {
-        header('location:edit_tugas.php?error=Tugas Gagal Diupdate');
+        echo "<script>
+            alert('Tugas Gagal Diupdate :(');
+            document.location='edit_tugas.php';
+            </script>";
     }
 }
 
@@ -86,7 +83,7 @@ include('layouts/headerSigned.php');
                 <label for="deskripsiForm"><b>
                         <h4>Deskripsi</h4>
                     </b></label>
-                <input type="text" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" name="deskripsi" value="<?php echo $deskripsiEdit ?>">
+                <textarea type="text" class="form-control form-control-lg text-wrap text-break mb-3 py-4 shadow rounded-4" id="deskripsiForm" rows="3" name="deskripsi" value=""><?php echo $deskripsiEdit ?></textarea>
                 <label for="deskripsiForm"><b>
                         <h4>Due Date</h4>
                     </b></label>
