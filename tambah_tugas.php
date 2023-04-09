@@ -1,4 +1,23 @@
 <?php
+session_start();
+include('server/connection.php');
+
+if (!isset($_SESSION['logged_in'])) {
+    header('location: login.php?error=You are not logged in');
+    exit;
+}
+
+if (isset($_GET['logout'])) {
+    if (isset($_SESSION['logged_in'])) {
+        unset($_SESSION['logged_in']);
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        unset($_SESSION['password']);
+        header('location:index.php');
+        exit;
+    }
+}
+
 include('layouts/headerSigned.php');
 ?>
 

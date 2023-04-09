@@ -1,4 +1,47 @@
 <?php
+session_start();
+include('server/connection.php');
+
+if (isset($_SESSION['logged_in'])) {
+    header('location: dashboard.php');
+    exit;
+}
+
+if (isset($_POST['login_btn'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+
+    $query = "SELECT * FROM users WHERE  email = ? AND password = ? LIMIT 1";
+
+    $stmt_login = $conn->prepare($query);
+    $stmt_login->bind_param('ss', $email, $password);
+
+    if ($stmt_login->execute()) {
+        $stmt_login->bind_result($idUser, $nama, $username, $password, $email);
+        $stmt_login->store_result();
+
+        if ($stmt_login->num_rows() == 1) {
+            $stmt_login->fetch();
+
+            $_SESSION['idUser'] = $idUser;
+            $_SESSION['nama'] = $nama;
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+            $_SESSION['email'] = $email;
+            $_SESSION['logged_in'] = true;
+
+            header('location: dashboard.php?message=Berhasil Login');
+        } else {
+            header('location: login.php?error=Tidak dapat Memverifikasi Akun Anda');
+        }
+    } else {
+        // Error
+        header('location: login.php?error=Something went wrong!');
+    }
+}
+?>
+
+<?php
 include('layouts/headerNotSigned.php');
 ?>
 
@@ -30,13 +73,24 @@ include('layouts/headerNotSigned.php');
                     <div class="container py-7 px-7">
                         <h1 style="margin-bottom:-2px">Hello Again.</h1>
                         <p class="text-muted">Please enter your email and password.</p>
-                        <form>
-                            <label for="emailForm"><b><h4>Email</h4></b></label>
-                            <input type="email" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="emailForm" placeholder="Email">
-                            <label for="passwordForm"><b><h4>Password</h4></b></label>
-                            <input type="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="passwordForm" placeholder="Password">
+                        <form id="login-form" method="POST" action="login.php">
+                            <?php if (isset($_GET['error'])) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php if (isset($_GET['error'])) {
+                                        echo $_GET['error'];
+                                    } ?>
+                                </div>
+                            <?php } ?>
+                            <label for="emailForm"><b>
+                                    <h4>Email</h4>
+                                </b></label>
+                            <input type="email" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="emailForm" name="email" placeholder="Email">
+                            <label for="passwordForm"><b>
+                                    <h4>Password</h4>
+                                </b></label>
+                            <input type="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="passwordForm" name="password" placeholder="Password">
                             <p class="text-nowrap text-muted">Not Registered? <a class="text-danger text-decoration-none text-opacity-75" href="register.php"><b>Create an account</b></a></p>
-                            <center><input class="btn btn-outline-light shadow px-5 py-2" style="background-color:#159895;" type="submit" value="LOGIN"></center>
+                            <center><input class="btn btn-outline-light shadow px-5 py-2" style="background-color:#159895;" type="submit" id="login-btn" name="login_btn" value="LOGIN"></center>
                         </form>
                     </div>
                 </div>

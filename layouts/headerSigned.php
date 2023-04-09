@@ -53,7 +53,7 @@
                     <i class="icon_profile me-2" style="font-size: 20px"></i><b>Username</b>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="logout.php" selected><img class="me-3" src="/resources/icon/logout-8.png" width="20px"></img>LOGOUT</a></li>
+                    <li><a class="dropdown-item" href="dashboard.php?logout=1" id="logout-btn" selected><img class="me-3" src="/resources/icon/logout-8.png" width="20px"></img>LOGOUT</a></li>
                 </ul>
             </div>
         </div>

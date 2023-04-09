@@ -1,4 +1,58 @@
 <?php
+session_start();
+include('server/connection.php');
+
+if (isset($_SESSION['logged_in'])) {
+    header('location: dashboard.php');
+    exit;
+}
+
+if (isset($_POST['register'])) {
+    $nama = $_POST['nama'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+    // Check apakah sudah terdaftar
+    $check_user = "SELECT COUNT(*) FROM users WHERE username = ?";
+
+    $stmt_check_user = $conn->prepare($check_user);
+    $stmt_check_user->bind_param('s', $username);
+    $stmt_check_user->execute();
+    $stmt_check_user->bind_result($num_rows);
+    $stmt_check_user->store_result();
+    $stmt_check_user->fetch();
+
+    // Ketika ada Username yang sama
+    if ($num_rows !== 0) {
+        header('location: register.php?error=Username already exists');
+    } else {
+        $save_user = "INSERT INTO users (nama, username, password, email)
+                      VALUES (?, ?, ?, ?)";
+
+        // Membuat User baru
+        $stmt_save_user = $conn->prepare($save_user);
+        $stmt_save_user->bind_param('ssss', $nama, $username, md5($password), $email);
+
+        // Akun Sudah Berhasil Dibuat
+        if ($stmt_save_user->execute()) {
+            $user_id = $stmt_save_user->insert_id;
+
+            $_SESSION['idUser'] = $user_id;
+            $_SESSION['nama'] = $nama;
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+            $_SESSION['email'] = $email;
+
+            header('location: login.php?register_success=Anda Telah Berhasil Register, Silahkan Login.');
+        } else {
+            header('location: register.php?error=Akun Tidak Berhasil Dibuat');
+        }
+    }
+}
+?>
+
+<?php
 include('layouts/headerNotSigned.php');
 ?>
 
@@ -30,25 +84,32 @@ include('layouts/headerNotSigned.php');
                     <div class="container py-3 px-7">
                         <h1 style="margin-bottom:-2px">Get's Started.</h1>
                         <p class="text-nowrap text-muted">Already have an account? <a class="text-danger text-decoration-none text-opacity-75" href="login.php"><b>Log in</b></a></p>
-                        <form>
+                        <form method="POST" action="register.php">
+                            <?php if (isset($_GET['error'])) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php if (isset($_GET['error'])) {
+                                        echo $_GET['error'];
+                                    } ?>
+                                </div>
+                            <?php } ?>
                             <label for="nameForm"><b>
                                     <h4>Nama</h4>
                                 </b></label>
-                            <input type="text" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="nameForm" placeholder="Nama">
+                            <input type="text" name="nama" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="nameForm" placeholder="Nama" required>
                             <label for="usernameForm"><b>
-                                    <h4>Password</h4>
+                                    <h4>Username</h4>
                                 </b></label>
-                            <input type="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="usernameForm" placeholder="Username">
+                            <input type="text" name="username" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="usernameForm" placeholder="Username" required>
 
                             <label for="emailForm"><b>
                                     <h4>Email</h4>
                                 </b></label>
-                            <input type="email" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="emailForm" placeholder="Email">
+                            <input type="email" name="email" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="emailForm" placeholder="Email" required>
                             <label for="passwordForm"><b>
                                     <h4>Password</h4>
                                 </b></label>
-                            <input type="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="passwordForm" placeholder="Password">
-                            <center><input class="btn btn-outline-light shadow my-4 px-5 py-2" style="background-color:#159895;" type="submit" value="Register"></center>
+                            <input type="password" name="password" class="form-control form-control-lg mb-3 shadow-form rounded-0" style="border-left: 6px solid #159895" id="passwordForm" placeholder="Password" required>
+                            <center><input class="btn btn-outline-light shadow my-4 px-5 py-2" style="background-color:#159895;" type="submit" id="register-btn" name="register" value="Register" /></center>
                         </form>
                     </div>
                 </div>
