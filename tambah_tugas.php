@@ -53,7 +53,7 @@ if (isset($_POST['tambahTugas'])) {
             $_SESSION['deadline'] = $deadline;
             $_SESSION['status'] = $status;
 
-            header('location:tambah_tugas.php?success=Berhasil Menambahkan Tugas');
+            header('location:tambah_tugas.php?message=Berhasil Menambahkan Tugas');
         } else {
             header('location:tambah_tugas.php?error=Tugas Gagal Ditambahkan');
         }
