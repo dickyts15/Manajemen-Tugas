@@ -7,7 +7,8 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-
+    $cryptedpassword = md5($password);
+    
     // Check apakah sudah terdaftar
     $check_user = "SELECT COUNT(*) FROM users WHERE username = ?";
 
@@ -30,7 +31,7 @@ if (isset($_POST['register'])) {
 
         // Membuat User baru
         $stmt_save_user = $conn->prepare($save_user);
-        $stmt_save_user->bind_param('ssss', $nama, $username, md5($password), $email);
+        $stmt_save_user->bind_param('ssss', $nama, $username, $cryptedpassword, $email);
 
         // Akun Sudah Berhasil Dibuat
         if ($stmt_save_user->execute()) {
@@ -39,7 +40,7 @@ if (isset($_POST['register'])) {
             $_SESSION['idUser'] = $user_id;
             $_SESSION['nama'] = $nama;
             $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
+            $_SESSION['password'] = $cryptedpassword;
             $_SESSION['email'] = $email;
 
             echo "<script>
