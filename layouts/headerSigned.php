@@ -50,7 +50,7 @@
 
             <div class="dropdown me-5">
                 <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="icon_profile me-2" style="font-size: 20px"></i><b>Username</b>
+                    <i class="icon_profile me-2" style="font-size: 20px"></i><b><?php ECHO $_SESSION['username']; ?></b>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="dashboard.php?logout=1" id="logout-btn" selected><img class="me-3" src="/resources/icon/logout-8.png" width="20px"></img>LOGOUT</a></li>

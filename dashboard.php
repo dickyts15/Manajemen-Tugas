@@ -35,7 +35,7 @@ include('layouts/headerSigned.php');
     <div class="container">
         <div class="text-white py-3">
             <h2>Dashboard</h2>
-            <h3>Hello, Username</h3>
+            <h3>Hello, <?php echo $_SESSION['nama']; ?></h3>
 
             <h5>Here are your important tasks.</h5>
         </div>
@@ -103,9 +103,9 @@ include('layouts/headerSigned.php');
                     </h1>
                     <img src="resources/icon/profile.png" width="125px" class="opacity-50 py-4" alt="">
                     <hr style="border-top: solid #159895; width: 60%;">
-                    <h1 class="py-2"><b>Name</b></h1>
-                    <h4 class="py-2"><b>Username</b></h4>
-                    <p class="py-2">Email@email.com</p>
+                    <h1 class="py-2"><b><?php echo $_SESSION['nama']; ?></b></h1>
+                    <h4 class="py-2"><b><?php echo $_SESSION['username']; ?></b></h4>
+                    <p class="py-2"><?php echo $_SESSION['email']; ?></p>
                     <hr class="py-2 mb-5" style="border-top: solid #159895; width: 60%;">
                 </center>
             </div>
