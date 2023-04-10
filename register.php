@@ -10,10 +10,10 @@ if (isset($_POST['register'])) {
     $cryptedpassword = md5($password);
     
     // Check apakah sudah terdaftar
-    $check_user = "SELECT COUNT(*) FROM users WHERE username = ?";
+    $check_user = "SELECT COUNT(*) FROM users WHERE email = ?";
 
     $stmt_check_user = $conn->prepare($check_user);
-    $stmt_check_user->bind_param('s', $username);
+    $stmt_check_user->bind_param('s', $email);
     $stmt_check_user->execute();
     $stmt_check_user->bind_result($num_rows);
     $stmt_check_user->store_result();
@@ -22,7 +22,7 @@ if (isset($_POST['register'])) {
     // Ketika ada Username yang sama
     if ($num_rows !== 0) {
         echo "<script>
-            alert('Username Telah Terdaftar!');
+            alert('Email Telah Terdaftar!');
             document.location='register.php';
             </script>";
     } else {
